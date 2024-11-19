@@ -12,6 +12,7 @@ A questo punto:
 -   Dichiaro Express come variabile come segue
 -   Richiamo la "funzione" Express
 -   Dichiaro la PORT tramite cui eseguirò il LISTEN
+-   Scrivo la riga che stabilisce dove raccogliere gli STATIC ASSETS (pubblici) e creo una CARTELLA nella DIRECTORY con lo stesso nome
 -   Dall'APP (Express) dichiaro la ROUTE (ROTTA) della Home della mia App, e cosa succede quando viene eseguito il GET
 -   Dichiaro infine il LISTEN
 */
@@ -20,8 +21,10 @@ const express = require('express');
 const app = express();
 const port = 3000
 
+app.use(express.static('public'))
+
 app.get('/', (req, res) => {
-  res.send('Hello World!')
+  res.send('Server del mio blog')
 })
 
 app.listen(port, () => {
