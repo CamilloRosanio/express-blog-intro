@@ -17,6 +17,21 @@ A questo punto:
 -   Dichiaro infine il LISTEN
 */
 
+
+
+
+// Dichiarazione dei REQUIRE
+const path = require('path');
+const mainJs = require('./main.js');
+
+console.log(mainJs);
+
+
+
+
+
+// Dichiarazione EXPRESS JS
+
 const express = require('express');
 const app = express();
 const port = 3000
