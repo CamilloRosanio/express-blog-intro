@@ -22,12 +22,7 @@ A questo punto:
 
 // Dichiarazione dei REQUIRE
 const path = require('path');
-const mainJs = require('./main.js');
-
-console.log(mainJs);
-
-
-
+const postArray = require('./main.js');
 
 
 // Dichiarazione EXPRESS JS
@@ -36,11 +31,25 @@ const express = require('express');
 const app = express();
 const port = 3000
 
+// Dichiarazione degli STATIC ASSETS (PUBLIC)
 app.use(express.static('public'))
+
+
+// Dichiarazione delle ROUTE
 
 app.get('/', (req, res) => {
   res.send('Server del mio blog')
 })
+
+app.get('/bacheca', (req, res) => {
+    let bachecaArray = {
+        postNum: postArray.length,
+        posts: postArray
+    }
+
+    res.json(bachecaArray);
+  })
+
 
 app.listen(port, () => {
   console.log(`Listen attivo e in ascolto sulla PORT ${port}`)

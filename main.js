@@ -4,12 +4,40 @@
 
 const postArray = [
     {
-        title: 'Post-1',
+        title: 'Ciambellone',
+        content: 'Delizioso ciambellone',
+        img: '/img/ciambellone.jpeg',
+        tags: ['ciambellone', 'Dolce', 'Torte']
+    },
+    {
+        title: 'Cracker di barbabietola',
+        content: 'Preparazione cracker di barbabietola',
+        img: '/img/cracker_barbabietola.jpeg',
+        tags: ['barbabietola', 'Cracker', 'impasto', 'salato']
+    },
+    {
+        title: 'Pane fritto',
+        content: 'Come fare il pane fritto',
+        img: '/img/pane_fritto_dolce.jpeg',
+        tags: ['dolce', 'Pane fritto']
+    },
+    {
+        title: 'Pasta di barbabietola',
+        content: 'Come preparare la pasta alla barbabietola',
+        img: '/img/pasta_barbabietola.jpeg',
+        tags: ['barbabietola', 'pasta', 'impasto', 'salato']
+    },
+    {
+        title: 'Torta paesana',
         content: '',
-        img: '',
-        tags: ['']
+        img: '/img/torta_paesana.jpeg',
+        tags: ['torte', 'torta paesana', 'dolce']
     }
 ]
 
 
+
+
+
+// EXPORT dell'Array per utilizzo su altri file JS
 module.exports = postArray;
