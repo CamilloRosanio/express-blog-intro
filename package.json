@@ -5,10 +5,12 @@
   "main": "app.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    
     "start": "node app.js",
     "dev": "node --watch app.js"
   },
   "author": "Camillo Rosanio",
-  "license": "ISC"
+  "license": "ISC",
+  "dependencies": {
+    "express": "^4.21.1"
+  }
 }
