@@ -56,32 +56,35 @@ app.get('/', (req, res) => {
 // ROUTE bacheca (con FILTER)
 app.get('/bacheca', (req, res) => {
 
-    // Tramite REQ.QUERY richiamo il parametro "term" (nome custom arbitrario) inserito nell'URL e lo dichiaro come variabile
-    // Con l'OPERATOR ?? mi assicuro che SE il valore esiste, uso il valore, altrimenti uso il DEFAULT (in questo caso stringa vuota)
-    const term = req.query.term ?? '';
+  // Tramite REQ.QUERY richiamo il parametro "term" (nome custom arbitrario) inserito nell'URL e lo dichiaro come variabile
+  // Con l'OPERATOR ?? mi assicuro che SE il valore esiste, uso il valore, altrimenti uso il DEFAULT (in questo caso stringa vuota)
+  const term = req.query.term ?? '';
 
-    let filteredPosts;
+  let filteredPosts;
 
-    filteredPosts = postArray.filter((post) => {
+  filteredPosts = postArray.filter((post) => {
 
-        // In questo caso sto filtrando per i post in cui nel TITLE è contenuto il TERM (portati entrambi a Lowercase così evito il problema del Case-Sensitive)
-        const titleIncludesTerm = post.title.toLowerCase().includes(term.toLowerCase());
+      // In questo caso sto filtrando per i post in cui nel TITLE è contenuto il TERM (portati entrambi a Lowercase così evito il problema del Case-Sensitive)
+      const titleIncludesTerm = post.title.toLowerCase().includes(term.toLowerCase());
 
-        // Ora voglio cercare anche nei TAGS, che è un Array, quindi setto prima la variabile sotto come FALSE
-        let tagsIncludesTerm = false;
+      // Ora voglio cercare anche nei TAGS, che è un Array, quindi setto prima la variabile sotto come FALSE
+      let tagsIncludesTerm = false;
 
-        // Scorro ciascun TAG per vedere se include il mio TERM
-        post.tags.forEach((tag) => {
-            if (tag.toLowerCase().includes(term.toLowerCase())) tagsIncludesTerm = true;
-        })
+      // Scorro ciascun TAG per vedere se include il mio TERM
+      post.tags.forEach((tag) => {
+          if (tag.toLowerCase().includes(term.toLowerCase())) tagsIncludesTerm = true;
+      })
 
-        // Il risultato è BOOLEANO, e visto che ho due condizioni le lego con un OR (in questo caso)
-        return titleIncludesTerm || tagsIncludesTerm;
-    })
+      // Il risultato è BOOLEANO, e visto che ho due condizioni le lego con un OR (in questo caso)
+      return titleIncludesTerm || tagsIncludesTerm;
+  })
 
-    // La RESPONSE sarà l'OBJECT filtrato.
-    // E' bene avere SEMPRE SOLO UNA RESPONSE
-    res.json(filteredPosts);
+  // La RESPONSE sarà l'OBJECT filtrato.
+  // E' bene avere SEMPRE SOLO UNA RESPONSE
+  res.json({
+    postNum: filteredPosts.length,
+    posts: filteredPosts,
+  });
 })
 
 
